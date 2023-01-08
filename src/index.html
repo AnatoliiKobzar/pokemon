@@ -5,9 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokemon</title>
-    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="./css/common.css" />
   </head>
   <body>
+    <div class="container">
+      <form class="js-form">
+        <input
+          class="js-input"
+          type="number"
+          name="pokemonId"
+          min="1"
+          max="905"
+          step="1"
+        />
+        <button type="submit">Получить покемона</button>
+      </form>
+      <button class="js-btn-previous" type="button">Предыдущий</button>
+      <button class="js-btn-next" type="button">Следующий</button>
+      <div class="js-container"></div>
+    </div>
+
     <script src="./js/index.js" type="module"></script>
   </body>
 </html>

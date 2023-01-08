@@ -18,11 +18,14 @@
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "dependencies": {
+    "babel-plugin-handlebars-inline-precompile": "^2.1.1",
+    "handlebars": "^4.7.7",
     "modern-normalize": "^1.1.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
     "parcel": "^2.6.0",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
   },

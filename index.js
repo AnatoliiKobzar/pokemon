@@ -6,14 +6,18 @@ const refs = {
 };
 
 refs.form.addEventListener('submit', onSearchPokemon);
+refs.btnPrev.addEventListener('click', onBtnPrevClick);
+refs.btnNext.addEventListener('click', onBtnNextClick);
+
+let searchQuery = '';
 
 function onSearchPokemon(event) {
   event.preventDefault();
-  const searchQuery = event.currentTarget.elements.pokemonId.value;
-
+  searchQuery = Number(event.currentTarget.elements.pokemonId.value);
   fetchPokemon(searchQuery)
     .then(renderPokemonCard)
     .catch(error => console.log(error));
+  refs.form.reset();
 }
 
 function fetchPokemon(pokemonId) {
@@ -27,10 +31,15 @@ function renderPokemonCard(pokemon) {
         dream_world: { front_default },
       },
     },
+    abilities,
     name,
     height,
     weight,
   } = pokemon;
+
+  const markupAbilities = abilities
+    .map(({ ability: { name } }) => `<li class="list-group-item">${name}</li>`)
+    .join('');
 
   const markup = `<div class="card">
   <div class="card-img-top">
@@ -42,11 +51,25 @@ function renderPokemonCard(pokemon) {
     <p class="card-text">Рост: ${(height * 0.1).toFixed(1)} м</p>
 
     <p class="card-text"><b>Умения</b></p>
-    <ul class="list-group"></ul>
-      <li class="list-group-item">{{ability.name}}</li>
+    <ul class="list-group">
+     ${markupAbilities}
     </ul>
   </div>
 </div>`;
 
   refs.container.innerHTML = markup;
+}
+
+function onBtnPrevClick() {
+  searchQuery -= 1;
+  fetchPokemon(searchQuery)
+    .then(renderPokemonCard)
+    .catch(error => console.log(error));
+}
+
+function onBtnNextClick() {
+  searchQuery += 1;
+  fetchPokemon(searchQuery)
+    .then(renderPokemonCard)
+    .catch(error => console.log(error));
 }

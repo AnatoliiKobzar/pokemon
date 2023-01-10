@@ -32,7 +32,6 @@ function renderPokemonCard(pokemon) {
     weight,
   } = pokemon;
 
-  const abilities = rf;
   const markup = `<div class="card">
   <div class="card-img-top">
     <img src="${front_default}" alt="${name}">

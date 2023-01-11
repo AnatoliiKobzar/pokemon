@@ -66,11 +66,11 @@ function renderPokemonCard(pokemon) {
     <img src="${front_default}" alt="${name}">
   </div>
   <div class="card-body">
-    <h2 class="card-title">Имя: ${name.toUpperCase()}</h2>
-    <p class="card-text">Вес: ${(weight * 0.1).toFixed(1)} кг</p>
-    <p class="card-text">Рост: ${(height * 0.1).toFixed(1)} м</p>
+    <h2 class="card-title">Name: ${name.toUpperCase()}</h2>
+    <p class="card-text">Weight: ${(weight * 0.1).toFixed(1)} kg</p>
+    <p class="card-text">Height: ${(height * 0.1).toFixed(1)} m</p>
 
-    <p class="card-text"><b>Умения</b></p>
+    <p class="card-text"><b>Abilities</b></p>
     <ul class="list-group">
      ${markupAbilities}
     </ul>

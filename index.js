@@ -85,12 +85,12 @@ function onBtnPrevClick() {
   getPokemon();
 }
 
-function onBtnNextClick() {
-  searchQuery += 1;
+function onBtnRandomClick() {
+  searchQuery = Math.floor(Math.random() * (649 - 1 + 1)) + 1;
   getPokemon();
 }
 
-function onBtnRandomClick() {
-  searchQuery = Math.floor(Math.random() * (649 - 1 + 1)) + 1;
+function onBtnNextClick() {
+  searchQuery += 1;
   getPokemon();
 }

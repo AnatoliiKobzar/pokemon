@@ -28,6 +28,16 @@ function getPokemon() {
   refs.btnPrev.removeAttribute('disabled');
   refs.btnNext.removeAttribute('disabled');
   refs.form.elements.pokemonId.value = searchQuery;
+  if (searchQuery <= 1) {
+    refs.btnPrev.setAttribute('disabled', 'true');
+  } else {
+    refs.btnPrev.removeAttribute('disabled');
+  }
+  if (searchQuery >= 649) {
+    refs.btnNext.setAttribute('disabled', 'true');
+  } else {
+    refs.btnNext.removeAttribute('disabled');
+  }
 }
 
 function fetchPokemon(pokemonId) {

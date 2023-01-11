@@ -3,21 +3,31 @@ const refs = {
   container: document.querySelector('.js-container'),
   btnPrev: document.querySelector('.js-btn-previous'),
   btnNext: document.querySelector('.js-btn-next'),
+  btnRandom: document.querySelector('.js-btn-random'),
 };
 
 refs.form.addEventListener('submit', onSearchPokemon);
 refs.btnPrev.addEventListener('click', onBtnPrevClick);
 refs.btnNext.addEventListener('click', onBtnNextClick);
+refs.btnRandom.addEventListener('click', onBtnRandomClick);
 
 let searchQuery = '';
 
 function onSearchPokemon(event) {
   event.preventDefault();
   searchQuery = Number(event.currentTarget.elements.pokemonId.value);
+  getPokemon();
+  refs.form.reset();
+  refs.form.elements.pokemonId.value = searchQuery;
+}
+
+function getPokemon() {
   fetchPokemon(searchQuery)
     .then(renderPokemonCard)
     .catch(error => console.log(error));
-  refs.form.reset();
+  refs.btnPrev.removeAttribute('disabled');
+  refs.btnNext.removeAttribute('disabled');
+  refs.form.elements.pokemonId.value = searchQuery;
 }
 
 function fetchPokemon(pokemonId) {
@@ -62,14 +72,15 @@ function renderPokemonCard(pokemon) {
 
 function onBtnPrevClick() {
   searchQuery -= 1;
-  fetchPokemon(searchQuery)
-    .then(renderPokemonCard)
-    .catch(error => console.log(error));
+  getPokemon();
 }
 
 function onBtnNextClick() {
   searchQuery += 1;
-  fetchPokemon(searchQuery)
-    .then(renderPokemonCard)
-    .catch(error => console.log(error));
+  getPokemon();
+}
+
+function onBtnRandomClick() {
+  searchQuery = Math.floor(Math.random() * (649 - 1 + 1)) + 1;
+  getPokemon();
 }

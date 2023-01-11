@@ -10,12 +10,23 @@
   <body>
     <div class="container">
       <form class="js-form">
-        <input class="js-input" type="number" name="pokemonId" min="1" max="649" step="1" />
+        <input
+          class="js-input"
+          type="number"
+          name="pokemonId"
+          min="1"
+          max="649"
+          step="1"
+          value="1"
+        />
         <button type="submit">Получить покемона</button>
       </form>
       <div class="js-container"></div>
-      <button class="js-btn-previous" type="button">Предыдущий</button>
-      <button class="js-btn-next" type="button">Следующий</button>
+      <ul class="list-btn">
+        <button class="js-btn-previous" type="button" disabled>Предыдущий</button>
+        <button class="js-btn-random" type="button">Рандомный</button>
+        <button class="js-btn-next" type="button" disabled>Следующий</button>
+      </ul>
     </div>
 
     <script src="./index.js" type="module"></script>
